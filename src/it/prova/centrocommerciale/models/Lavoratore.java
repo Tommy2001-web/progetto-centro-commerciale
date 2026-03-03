@@ -45,6 +45,9 @@ public abstract class Lavoratore {
         this.negozio = negozio;
     }
 
+    public abstract boolean handleItemAdd(Item item);
+    public abstract boolean handleItemRemove(Item item);
+
     @Override
     public String toString() {
         return "Lavoratore{" +

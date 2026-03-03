@@ -13,6 +13,11 @@ public class Negozio {
 
     }
 
+    public Negozio(String partitaIva, String ragioneSociale) {
+        this.partitaIva = partitaIva;
+        this.ragioneSociale = ragioneSociale;
+    }
+
     public Negozio(String partitaIva, String ragioneSociale, List<Item> prodotti, List<Lavoratore> lavoratori) {
         this.partitaIva = partitaIva;
         this.ragioneSociale = ragioneSociale;
@@ -50,5 +55,27 @@ public class Negozio {
 
     public void setLavoratori(List<Lavoratore> lavoratori) {
         this.lavoratori = lavoratori;
+    }
+
+    public boolean addToItems(Lavoratore lavoratore, Item item) {
+        if((this.prodotti.contains(item) ||
+                (!this.lavoratori.contains(lavoratore)))) return false;
+        return lavoratore.handleItemAdd(item);
+    }
+
+    public boolean removeFromItems(Lavoratore lavoratore, Item item) {
+        if (!(this.prodotti.contains(item)) ||
+                (!this.lavoratori.contains(lavoratore))) return false;
+        return lavoratore.handleItemRemove(item);
+    }
+
+    @Override
+    public String toString() {
+        return "Negozio{" +
+                "partitaIva='" + partitaIva + '\'' +
+                ", ragioneSociale='" + ragioneSociale + '\'' +
+                ", prodotti=" + prodotti +
+                ", lavoratori=" + lavoratori +
+                '}';
     }
 }
