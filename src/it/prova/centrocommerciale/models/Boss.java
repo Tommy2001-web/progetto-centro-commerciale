@@ -3,7 +3,7 @@ package it.prova.centrocommerciale.models;
 public class Boss extends Lavoratore {
 
     public Boss() {
-        
+
     }
 
     public Boss(String nome, String cognome) {
